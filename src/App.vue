@@ -1,15 +1,29 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <div class="col-md-6 offset-md-3">
+      <h1 class="text-center mb-4">Todo App</h1>
+      <input type="text" class="form-control" v-model="userInput" @keyup.enter="addNewTodo">
+    </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
+  data(){
+    return {
+      userInput: '',
+      todoList: []
+    }
+  },
+  methods: {
+    addNewTodo() {
+      this.todoList.push(this.userInput);
+      this.userInput = '';
+    }
+  },
   components: {
-    HelloWorld
   }
 }
 </script>
