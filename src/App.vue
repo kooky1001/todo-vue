@@ -5,9 +5,11 @@
       <input type="text" class="form-control mb-4" v-model="userInput" @keyup.enter="addNewTodo">
 
       <div class="list-group">
-        <button class="list-group-item text-left" v-for="todo in todoList" v-bind:key="todo">
-          {{ todo }}
+        <template v-for="todo in activeTodoList()" v-bind:key="todo">
+        <button class="list-group-item text-left" @click="toggleTodoState(todo)">
+          {{ todo.label }}
         </button>
+        </template>
       </div>
     </div>
   </div>
@@ -24,9 +26,18 @@ export default {
     }
   },
   methods: {
+    activeTodoList(){
+      return this.todoList.filter(todo => todo.state === 'active');
+    },
     addNewTodo() {
-      this.todoList.push(this.userInput);
+      this.todoList.push({
+        label: this.userInput,
+        state: 'active'
+      });
       this.userInput = '';
+    },
+    toggleTodoState(todo){
+      todo.state = todo.state === 'active' ? 'done' : 'active';
     }
   },
   components: {
