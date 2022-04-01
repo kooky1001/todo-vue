@@ -2,7 +2,13 @@
   <div id="app">
     <div class="col-md-6 offset-md-3">
       <h1 class="text-center mb-4">Todo App</h1>
-      <input type="text" class="form-control" v-model="userInput" @keyup.enter="addNewTodo">
+      <input type="text" class="form-control mb-4" v-model="userInput" @keyup.enter="addNewTodo">
+
+      <div class="list-group">
+        <button class="list-group-item text-left" v-for="todo in todoList" v-bind:key="todo">
+          {{ todo }}
+        </button>
+      </div>
     </div>
   </div>
 </template>
