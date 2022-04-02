@@ -34,7 +34,7 @@ export default {
   },
   computed: {
     activeTodoList(){
-      return this.todoList.filter(todo => todo.state === 'all' || todo.state === this.currentState);
+      return this.todoList.filter(todo => this.currentState === 'all' || todo.state === this.currentState);
     }
   },
   methods: {
