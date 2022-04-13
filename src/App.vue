@@ -4,6 +4,17 @@
       <h1 class="text-center mb-4">Todo App</h1>
       <input type="text" class="form-control mb-4" v-model="userInput" @keyup.enter="addNewTodo">
 
+      <div style="margin: 100px">
+          <h1 id="stopwatch" >
+              00:00:00
+          </h1>
+          <div>
+              <button onclick="startClock()">start</button>
+              <button onclick="stopClock()">stop</button>
+              <button onclick="resetClock()">reset</button>
+          </div>
+      </div>
+
       <div class="list-group mb-4">
         <template v-for="todo in activeTodoList" v-bind:key="todo">
         <button class="list-group-item text-left" @click="toggleTodoState(todo)">
