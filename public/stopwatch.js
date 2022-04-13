@@ -3,7 +3,7 @@ let time = 0;
 const stopwatch = document.getElementById("stopwatch");
 let  hour, min, sec;
 
-
+//git에 추가
 function printTime() {
     time++;
     stopwatch.innerText = getTimeFormatString();
